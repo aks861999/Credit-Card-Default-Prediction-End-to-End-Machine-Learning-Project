@@ -1,0 +1,133 @@
+\documentclass[11pt, a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{parskip}
+
+% Page layout
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% Title information
+\title{\textbf{Machine Learning 2 Project:\\Initial Data Set Proposal}}
+\author{[Tasnia, Hieran, Paty, Akash Biswas]}
+\date{December 3, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Selected Machine Learning Methods}
+
+For this classification project, we propose to use the following two supervised learning methods:
+
+\subsection*{1. Random Forest (ML1 method)}
+Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the class that is the mode of the classes predicted by individual trees. This method is particularly suitable for our dataset due to its ability to handle both categorical and continuous variables, resistance to overfitting, and capability to identify important features.
+
+\subsection*{2. Support Vector Machines (SVM) (ML2 method)}
+Support Vector Machines are powerful classifiers that work by finding the optimal hyperplane that maximally separates different classes in the feature space. SVMs are well-suited for binary classification problems like credit card default prediction and can handle high-dimensional data effectively through the use of kernel functions.
+
+\section{Data Set Description}
+
+\textbf{Source:} Kaggle -- UCI Machine Learning Repository
+
+\textbf{Link:} \url{https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset}
+
+\textbf{Original Study:} Yeh, I. (2009). Default of Credit Card Clients [Dataset]. UCI Machine Learning Repository. \url{https://doi.org/10.24432/C55S3H}
+
+\textbf{Dataset Name:} Default of Credit Card Clients (Taiwan)
+
+\textbf{Context:} This dataset contains information on default payments, demographic factors, credit data, history of payment, and bill statements of credit card clients in Taiwan from April 2005 to September 2005.
+
+\section{Data Set Summary}
+
+\textbf{Number of Observations:} 30,000 credit card clients
+
+\textbf{Number of Variables:} 24 (23 predictor variables + 1 target variable)
+
+\subsection{Target Variable}
+
+\begin{itemize}[leftmargin=*]
+    \item \texttt{default.payment.next.month}: Binary variable indicating default payment (1 = default, 0 = no default) -- \textbf{Nominal}
+\end{itemize}
+
+\subsection{Predictor Variables}
+
+\subsubsection*{Demographic Variables}
+
+\begin{itemize}[leftmargin=*]
+    \item \texttt{ID}: Client ID -- \textbf{Nominal} (will be removed for modeling)
+    \item \texttt{LIMIT\_BAL}: Amount of given credit in NT dollars (includes individual and family/supplementary credit) -- \textbf{Continuous}
+    \item \texttt{SEX}: Gender (1 = male, 2 = female) -- \textbf{Nominal}
+    \item \texttt{EDUCATION}: Education level (1 = graduate school, 2 = university, 3 = high school, 4 = others) -- \textbf{Ordinal}
+    \item \texttt{MARRIAGE}: Marital status (1 = married, 2 = single, 3 = others) -- \textbf{Nominal}
+    \item \texttt{AGE}: Age in years -- \textbf{Discrete}
+\end{itemize}
+
+\subsubsection*{Payment History Variables (Repayment Status)}
+
+\begin{itemize}[leftmargin=*]
+    \item \texttt{PAY\_0} to \texttt{PAY\_6}: Repayment status in September 2005 to April 2005 (-1 = pay duly, 1 = payment delay for one month, 2 = payment delay for two months, etc.) -- \textbf{Ordinal}
+\end{itemize}
+
+\subsubsection*{Bill Amount Variables}
+
+\begin{itemize}[leftmargin=*]
+    \item \texttt{BILL\_AMT1} to \texttt{BILL\_AMT6}: Bill statement amount from September 2005 to April 2005 (in NT dollars) -- \textbf{Continuous}
+\end{itemize}
+
+\subsubsection*{Payment Amount Variables}
+
+\begin{itemize}[leftmargin=*]
+    \item \texttt{PAY\_AMT1} to \texttt{PAY\_AMT6}: Previous payment amount from September 2005 to April 2005 (in NT dollars) -- \textbf{Continuous}
+\end{itemize}
+
+\section{Data Suitability Assessment}
+
+\subsection{Meets Project Requirements}
+
+\begin{itemize}[leftmargin=*, label=\checkmark]
+    \item Dataset contains 30,000 observations.
+    \item Contains 23 predictor variables.
+    \item Appropriate for supervised learning classification problem
+    \item Well-balanced mix of categorical and continuous variables
+\end{itemize}
+
+\subsection{Target Variable Distribution}
+
+\begin{itemize}[leftmargin=*]
+    \item No Default (Class 0): $\sim$77.88\% (23,364 cases)
+    \item Default (Class 1): $\sim$22.12\% (6,636 cases)
+\end{itemize}
+
+The dataset presents a slight class imbalance, which is typical for credit default problems. This will be addressed during model training through appropriate techniques such as class weighting or resampling methods.
+
+\subsection{Justification for Method Selection}
+
+The combination of Random Forest and SVM provides complementary approaches: Random Forest offers interpretability through feature importance and handles non-linear relationships naturally, while SVM excels at finding optimal decision boundaries in high-dimensional spaces. Both methods are robust for this binary classification task and will allow for meaningful comparison of performance and interpretability.
+
+\vspace{1em}
+
+
+\end{document}
